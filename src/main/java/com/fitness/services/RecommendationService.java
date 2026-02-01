@@ -30,6 +30,8 @@ public class RecommendationService {
         Recommendation recommendation = Recommendation.builder()
                 .user(user)
                 .activity(activity)
+                .type(request.getType())
+                .recommendation(request.getRecommendation())
                 .improvements(request.getImprovements())
                 .suggestions(request.getSuggestions())
                 .safety(request.getSafety())
