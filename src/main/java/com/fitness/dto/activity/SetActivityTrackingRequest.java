@@ -15,11 +15,14 @@ import java.util.Map;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SetActivityTrackingRequest {
+    private String userId;
     private Integer Duration;
     private Integer caloriesBurned;
     private ActivityType type;
     private Map<String, Object> additionalMetrics;
     private LocalDateTime startTime;
     private LocalDateTime endTime;
-    private List<Recommendation> recommendations = new ArrayList<>();
+   // private List<Recommendation> recommendations = new ArrayList<>();
+
+
 }

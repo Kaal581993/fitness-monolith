@@ -8,10 +8,9 @@ import com.fitness.model.User;
 import com.fitness.services.ActivityService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("api/activities/")
@@ -20,32 +19,16 @@ import org.springframework.web.bind.annotation.RestController;
 public class ActivityController {
     private final ActivityService activities;
 
-    @PostMapping("/track/activities")
+    @PostMapping("/track/setactivities")
     public ResponseEntity<ActivityTrackingResponse> trackActivity(@RequestBody SetActivityTrackingRequest request){
+        return ResponseEntity.ok(activities.activityTracking(request));
+    }
 
-        Activity activity = Activity.builder()
-                .Duration(request.getDuration())
-                .caloriesBurned(request.getCaloriesBurned())
-                .type(request.getType())
-                .additionalMetrics(request.getAdditionalMetrics())
-                .startTime(request.getStartTime())
-                .endTime(request.getEndTime())
-                .recommendations(request.getRecommendations())
-                .build();
+    @GetMapping("get")
+    public ResponseEntity<List<ActivityTrackingResponse>> getActivities(
+           @RequestHeader(value = "X-User-ID") String userId
 
-        Activity saved = activities.activityTracking(activity);
-
-        ActivityTrackingResponse response = new ActivityTrackingResponse();
-        response.setDuration(saved.getDuration());
-        response.setCaloriesBurned(saved.getCaloriesBurned());
-        response.setType(saved.getType());
-        response.setAdditionalMetrics(saved.getAdditionalMetrics());
-        response.setStartTime(saved.getStartTime());
-        response.setEndTime(saved.getEndTime());
-        response.setCreatedAt(saved.getCreatedAt());
-        response.setUpdatedAt(saved.getUpdatedAt());
-        response.setRecommendations(saved.getRecommendations());
-
-        return ResponseEntity.ok(response);
+    ){
+        return ResponseEntity.ok(activities.getActivities(userId));
     }
 }

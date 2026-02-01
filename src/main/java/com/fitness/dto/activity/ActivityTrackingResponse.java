@@ -16,11 +16,12 @@ import java.util.Map;
 @AllArgsConstructor
 public class ActivityTrackingResponse {
 
+    private String Id;
     private Integer Duration;
     private Integer caloriesBurned;
     private ActivityType type;
     private Map<String, Object> additionalMetrics;
-
+    private String userID;
     private LocalDateTime startTime;
     private LocalDateTime endTime;
 
@@ -28,4 +29,8 @@ public class ActivityTrackingResponse {
     private LocalDateTime updatedAt;
 
     private List<Recommendation> recommendations = new ArrayList<>();
+
+    public void setId(String id) {
+        Id = id;
+    }
 }

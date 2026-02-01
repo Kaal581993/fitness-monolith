@@ -28,6 +28,7 @@ public class Activity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
+
     private Integer Duration;
     private Integer caloriesBurned;
 
