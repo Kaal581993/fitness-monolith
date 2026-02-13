@@ -28,8 +28,12 @@ public class User {
     private String lastName;
     private Date DOB;
 
+    @Column(unique = true)
     private String email;
     private String password;
+
+    @Enumerated(EnumType.STRING)
+    private UserRole role = UserRole.USER;
 
     @CreationTimestamp
     @Column(updatable = false, unique = true, nullable = false)

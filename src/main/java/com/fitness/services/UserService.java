@@ -1,10 +1,14 @@
 package com.fitness.services;
 
+import com.fitness.dto.user.LoginRequest;
 import com.fitness.dto.user.RegisterRequest;
 import com.fitness.dto.user.UserResponse;
 import com.fitness.model.User;
+import com.fitness.model.UserRole;
 import com.fitness.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -16,9 +20,13 @@ import java.sql.Date;
 public class UserService {
     private final UserRepository userRepository;
 
+    private final PasswordEncoder passwordEncoder;
 
 
     public UserResponse register(RegisterRequest request) {
+
+        UserRole role = request.getRole() != null ? request.getRole()
+                : UserRole.USER;
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         LocalDate dob = LocalDate.parse(request.getDOB(), formatter);
@@ -29,7 +37,8 @@ public class UserService {
                     .lastName(request.getLastName())
                     .email(request.getEmail())
                     .DOB(dobDate)
-                    .password(request.getPassword())
+                    .password(passwordEncoder.encode(request.getPassword()))
+                    .role(role)
                     .build();
 
 
@@ -54,7 +63,7 @@ public class UserService {
         return mapToResponse(savedUser);
     }
 
-    private UserResponse mapToResponse(User savedUser) {
+    public UserResponse mapToResponse(User savedUser) {
         UserResponse userResponse = new UserResponse();
         userResponse.setId(savedUser.getId());
         userResponse.setFirstName(savedUser.getFirstName());
@@ -65,6 +74,22 @@ public class UserService {
         userResponse.setCreatedAt(savedUser.getCreatedAt());
         userResponse.setUpdatedAt(savedUser.getUpdatedAt());
         return userResponse;
+    }
+
+    public User authenticated(LoginRequest loginRequest) {
+        User user = userRepository.findByEmail(
+                loginRequest.getEmail()
+        );
+        if (user == null)
+            throw new RuntimeException("Invalid Credentials" +
+                    "Username/email is invalid or not registered");
+
+        if (!passwordEncoder.matches(loginRequest.getPassword(), user.getPassword())){
+            throw new RuntimeException("Invalid Credentials" +
+                    "User password is incorrect");
+        }
+
+        return user;
     }
 
 //    public User register(RegisterRequest request) {

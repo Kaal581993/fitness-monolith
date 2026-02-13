@@ -2,6 +2,7 @@ package com.fitness.services;
 
 
 import com.fitness.dto.recommendation.RecommendationRequest;
+import com.fitness.dto.recommendation.RecommendationResponse;
 import com.fitness.model.Activity;
 import com.fitness.model.Recommendation;
 import com.fitness.model.User;
@@ -9,7 +10,10 @@ import com.fitness.repository.ActivityRepository;
 import com.fitness.repository.RecomendationRepository;
 import com.fitness.repository.UserRepository;
 import lombok.AllArgsConstructor;
+import org.jspecify.annotations.Nullable;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @AllArgsConstructor
@@ -43,8 +47,13 @@ public class RecommendationService {
         return recomendationRepository.save(recommendation);
 
     }
-//    private final ActivityRepository activityRepository;
-//    private final UserRepository userRepository;
+
+    public List<Recommendation> getRecommendation(String userId){
+        return recomendationRepository.findByUserId(userId);
+    }
 
 
+    public List<Recommendation> getActivityRecommendation(String activityId){
+        return recomendationRepository.findByActivityId(activityId);
+    }
 }

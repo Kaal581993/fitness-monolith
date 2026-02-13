@@ -9,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("api/recomendations")
 @RequiredArgsConstructor
@@ -27,8 +29,20 @@ public class RecomendationController {
         return ResponseEntity.ok(recommendation);
     }
 
-//    @GetMapping("/getrecommendation/{userId}")
+    @GetMapping("/getrecommendation/{userId}")
+    public ResponseEntity<List<Recommendation>> getUserRecommendation(
+            @PathVariable String userId
+    ){
+        List<Recommendation> recommendationList= recommendationService.getRecommendation(userId);
+        return ResponseEntity.ok(recommendationList);
+    }
 //
-//    @GetMapping("/ativityrecommendation")
-
+   @GetMapping("/activityrecommendation/{activityId}")
+   public ResponseEntity<List<Recommendation>> getActivityRecommendation(
+           @PathVariable String activityId
+   ){
+       List<Recommendation> recommendationList= recommendationService.getActivityRecommendation(activityId);
+       return ResponseEntity.ok(recommendationList);
+   }
+//
 }
