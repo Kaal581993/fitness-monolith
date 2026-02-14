@@ -22,6 +22,11 @@ public class SecurityConfig {
                         authorizeRequests
                                 .requestMatchers("/api/admin/**").hasRole("ADMIN")
                                 .requestMatchers("/api/auth/users/**").permitAll()
+                                .requestMatchers("/swagger-ui.html",
+                                        "/swagger-ui/**",
+                                        "/v3/api-docs/**",
+                                        "/v3/api-docs.yaml",
+                                        "/v3/api-docs/swagger-config").permitAll()
                                 .requestMatchers("/api/activities/**").authenticated()
                                 .requestMatchers("/api/recomendations/**").authenticated()
 
