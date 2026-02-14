@@ -1,0 +1,224 @@
+/* ========================================
+   FITNESS TRACKER API - SWAGGER UI THEME
+   ======================================== */
+
+/* Hide default logo and download URL wrapper */
+.swagger-ui .topbar .download-url-wrapper {
+    display: none !important;
+}
+
+/* Custom logo - replace the default Swagger logo */
+.swagger-ui .topbar-wrapper a::before {
+    content: "";
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background-image: url("https://cdn.iconscout.com/icon/premium/png-256-thumb/demo-icon-svg-download-png-1600695.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+/* Hide the default Swagger logo image */
+.swagger-ui .topbar-wrapper img {
+    display: none !important;
+}
+
+/* Custom title styling */
+.swagger-ui .topbar-wrapper span {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #ffffff !important;
+}
+
+/* ========================================
+   TOP BAR THEME - AQUA BLUE
+   ======================================== */
+
+.swagger-ui .topbar {
+    background-color: #00bcd4 !important;  /* Aqua Blue */
+    padding: 10px 0;
+}
+
+/* ========================================
+   MAIN BACKGROUND
+   ======================================== */
+
+body {
+    background-color: #f5f5f5;
+}
+
+/* ========================================
+   SECTION HEADERS
+   ======================================== */
+
+.swagger-ui .opblock-tag {
+    color: #0097a7 !important;  /* Darker Aqua Blue */
+    border-bottom: 2px solid #00bcd4 !important;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* ========================================
+   HTTP METHOD COLORS - AQUA THEME
+   ======================================== */
+
+/* GET operations - Aqua Blue */
+.swagger-ui .opblock-get .opblock-summary-method {
+    background-color: #00bcd4 !important;
+}
+
+.swagger-ui .opblock-get .opblock-summary {
+    border-color: #00bcd4 !important;
+}
+
+.swagger-ui .opblock-get {
+    border-color: #00bcd4 !important;
+    background-color: rgba(0, 188, 212, 0.1) !important;
+}
+
+/* POST operations - Teal */
+.swagger-ui .opblock-post .opblock-summary-method {
+    background-color: #009688 !important;
+}
+
+.swagger-ui .opblock-post .opblock-summary {
+    border-color: #009688 !important;
+}
+
+.swagger-ui .opblock-post {
+    border-color: #009688 !important;
+    background-color: rgba(0, 150, 136, 0.1) !important;
+}
+
+/* PUT operations - Cyan */
+.swagger-ui .opblock-put .opblock-summary-method {
+    background-color: #00acc1 !important;
+}
+
+.swagger-ui .opblock-put .opblock-summary {
+    border-color: #00acc1 !important;
+}
+
+.swagger-ui .opblock-put {
+    border-color: #00acc1 !important;
+    background-color: rgba(0, 172, 193, 0.1) !important;
+}
+
+/* DELETE operations - Red (keeping for visibility) */
+.swagger-ui .opblock-delete .opblock-summary-method {
+    background-color: #f44336 !important;
+}
+
+.swagger-ui .opblock-delete .opblock-summary {
+    border-color: #f44336 !important;
+}
+
+.swagger-ui .opblock-delete {
+    border-color: #f44336 !important;
+    background-color: rgba(244, 67, 54, 0.1) !important;
+}
+
+/* PATCH operations - Light Aqua */
+.swagger-ui .opblock-patch .opblock-summary-method {
+    background-color: #26c6da !important;
+}
+
+.swagger-ui .opblock-patch .opblock-summary {
+    border-color: #26c6da !important;
+}
+
+.swagger-ui .opblock-patch {
+    border-color: #26c6da !important;
+    background-color: rgba(38, 198, 218, 0.1) !important;
+}
+
+/* ========================================
+   BUTTONS - AQUA THEME
+   ======================================== */
+
+.swagger-ui .btn.execute {
+    background-color: #00bcd4 !important;
+    border-color: #00bcd4 !important;
+    color: white !important;
+}
+
+.swagger-ui .btn.execute:hover {
+    background-color: #0097a7 !important;
+    border-color: #0097a7 !important;
+}
+
+/* Primary buttons */
+.swagger-ui .btn.primary {
+    background-color: #00bcd4 !important;
+    border-color: #00bcd4 !important;
+}
+
+.swagger-ui .btn.primary:hover {
+    background-color: #0097a7 !important;
+}
+
+/* ========================================
+   AUTHORIZATION BUTTON
+   ======================================== */
+
+.swagger-ui .btn.authorize {
+    background-color: #00bcd4 !important;
+    border-color: #00bcd4 !important;
+    color: white !important;
+}
+
+.swagger-ui .btn.authorize:hover {
+    background-color: #0097a7 !important;
+}
+
+/* ========================================
+   LINKS
+   ======================================== */
+
+.swagger-ui a {
+    color: #00bcd4 !important;
+}
+
+.swagger-ui a:hover {
+    color: #0097a7 !important;
+}
+
+/* ========================================
+   RESPONSE CODES
+   ======================================== */
+
+.swagger-ui .response-col_status {
+    color: #00bcd4 !important;
+}
+
+/* ========================================
+   MODELS/SCHEMAS
+   ======================================== */
+
+.swagger-ui .model-box {
+    border-color: #00bcd4 !important;
+}
+
+.swagger-ui .model-title {
+    color: #0097a7 !important;
+}
+
+/* ========================================
+   PARAMETERS
+   ======================================== */
+
+.swagger-ui .parameters-col_description {
+    color: #0097a7 !important;
+}
+
+/* ========================================
+   TRY IT OUT BUTTON
+   ======================================== */
+
+.swagger-ui .btn.try-out__btn {
+    background-color: #00bcd4 !important;
+    border-color: #00bcd4 !important;
+}
