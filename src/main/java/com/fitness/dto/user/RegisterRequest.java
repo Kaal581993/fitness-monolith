@@ -1,8 +1,7 @@
 package com.fitness.dto.user;
 
 import com.fitness.model.UserRole;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,6 +25,8 @@ public class RegisterRequest {
     private UserRole Role;
 
     @NotBlank(message = "Password is required")
+    @Size(min = 8, message = "Password must be at least 8 characters")
+    @Pattern(regexp = "^(?=.*[a-zA-Z])(?=.*\\d).+$", message = "Password must be alphanumeric")
     private String password;
 
     @NotBlank(message = "Date of Birth is required")
